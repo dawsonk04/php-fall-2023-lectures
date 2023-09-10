@@ -15,7 +15,7 @@ main {
     width: 60%;
     float: left;
     font-size: large;
-
+    text-align: center;
 }
 main img {
     width: 250px;
