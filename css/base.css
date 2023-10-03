@@ -68,4 +68,6 @@ li {
 li:last-child {
     border-bottom:none;
 }
-
+table {
+    margin: auto;
+}
