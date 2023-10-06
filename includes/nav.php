@@ -5,4 +5,6 @@
     <li><a href="/magic8/magic8.php">Magic8</a> </li>
     <li><a href="/diceroll/diceroll.php">DiceRoll</a> </li>
     <li><a href="/movielist/movielist.php">MovieList</a> </li>
+    <li><a href="/customerlist/customerlist.php">CustomerList</a> </li>
+
 </ul>

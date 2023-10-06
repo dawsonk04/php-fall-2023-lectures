@@ -16,7 +16,7 @@
 <main>
     <h3> My Movie List</h3>
 
-    <table border="1" width="50%" style = "margin:auto " >
+    <table border="1" width="85%" style = "margin:auto " >
         <tr>
             <th>KEY</th>
             <th>Movie Title</th>

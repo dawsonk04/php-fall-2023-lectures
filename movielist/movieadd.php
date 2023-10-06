@@ -56,7 +56,7 @@
 
         <tr>
         <th>Movie Name</th>
-        <td><input id="txtTitle" name="txtTile" type="text" size="50" /></td>
+        <td><input id="txtTitle" name="txtTitle" type="text" size="50" /></td>
         </tr>
 
         <tr>
