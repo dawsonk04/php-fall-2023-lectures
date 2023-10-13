@@ -39,7 +39,7 @@
 
           echo "<tr>";
           echo "<td>" . $row["Movie_ID"] ." </td>";
-          echo "<td>" . $row["Movie_Title"] ." </td>";
+          echo "<td><a href='movieupdate.php?id=". $row["Movie_ID"] ."'> " . $row["Movie_Title"] ."</a> </td>";
           echo "<td>" . $row["Movie_Rating"] ." </td>";
           echo "</tr>";
 
