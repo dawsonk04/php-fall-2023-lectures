@@ -48,7 +48,7 @@
 
             echo "<tr>";
             echo "<td>" . $row["CustomerID"] ." </td>";
-            echo "<td>" . $row["FirstName"] ." </td>";
+            echo "<td> <a href='customerupdate.php?id=". $row["CustomerID"] ."'> " . $row["FirstName"] ."</a> </td>";
             echo "<td>" . $row["LastName"] ." </td>";
             echo "<td>" . $row["Address"] ." </td>";
             echo "<td>" . $row["City"] ." </td>";
