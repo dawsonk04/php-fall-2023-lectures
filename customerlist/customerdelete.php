@@ -20,5 +20,5 @@ if (isset($_GET["id"])) {
         echo "Error: $error";
     }
 }
-header("Location:movielist.php");
+header("Location:customerlist.php");
 ?>

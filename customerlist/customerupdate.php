@@ -21,7 +21,7 @@ if(isset($_POST['txtFirstName'])) {
                                     $PasswordFake = 'SECRET';
                                     $Password = $_POST['txtPassword'];
 
-                                    $id = $_POST["txtid"];
+                                    $id = $_POST["txtID"];
 
                                     try {
 
@@ -41,6 +41,8 @@ if(isset($_POST['txtFirstName'])) {
                                         $sql->bindValue(":Phone", $Phone);
                                         $sql->bindValue(":Email", $Email);
                                         $sql->bindValue(":Password", $Password);
+                                        $sql->bindValue(":ID", $id);
+
 
 
                                         $sql->execute();
@@ -49,6 +51,7 @@ if(isset($_POST['txtFirstName'])) {
                                         $error = $e->getMessage();
                                         echo "Error: $error";
                                     }
+                                    header("Location:customerlist.php");
                                 }
                             }
                         }
@@ -68,7 +71,7 @@ if (isset($_GET["id"])) {
         $db = new PDO($dsn, $username, $password, $options);
 
 
-        $sql = $db->prepare("select * from CustomerList where Movie_ID = :id");
+        $sql = $db->prepare("select * from CustomerList where CustomerID = :id");
         $sql->bindValue(":id",$id);
 
         $sql->execute();
@@ -91,6 +94,12 @@ if (isset($_GET["id"])) {
         $error = $e->getMessage();
         echo "Error: $error";
     }
+
+
+
+}
+else {
+    header("Location:customerlist.php");
 }
 ?>
 
@@ -172,7 +181,7 @@ if (isset($_GET["id"])) {
 
             <tr>
                 <td colspan="2">
-                    <input type="submit" value="Update Movie"/> | <input type="button" onclick="DeleteCustomer('<?=$FirstName?>',<?=$id?>)" value="Delete Customer">                </td>
+                    <input type="submit" value="Update Customer"/> | <input type="button" onclick="DeleteCustomer('<?=$FirstName?>',<?=$id?>)" value="Delete Customer">                </td>
             </tr>
 
         </table>

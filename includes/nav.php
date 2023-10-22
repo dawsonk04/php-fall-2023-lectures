@@ -6,5 +6,7 @@
     <li><a href="/diceroll/diceroll.php">DiceRoll</a> </li>
     <li><a href="/movielist/movielist.php">MovieList</a> </li>
     <li><a href="/customerlist/customerlist.php">CustomerList</a> </li>
+    <li><a href="/login/">Login</a> </li>
+
 
 </ul>

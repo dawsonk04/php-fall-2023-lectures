@@ -5,7 +5,7 @@ include '../includes/dbConn.php';
 
 
     if(isset($_POST["txtTitle"])) {
-        if(isset($_POST["txtRating"])) {
+        if (isset($_POST["txtRating"])) {
             $title = $_POST["txtTitle"];
             $rating = $_POST["txtRating"];
             $id = $_POST["txtID"];
@@ -19,16 +19,12 @@ include '../includes/dbConn.php';
 
 
                 $sql = $db->prepare("update MovieList set Movie_Title = :Title, Movie_Rating = :Rating where Movie_ID = :ID ");
-                $sql->bindValue(":Title",$title);
-                $sql->bindValue(":Rating",$rating);
-                $sql->bindValue(":ID",$id);
+                $sql->bindValue(":Title", $title);
+                $sql->bindValue(":Rating", $rating);
+                $sql->bindValue(":ID", $id);
 
 
                 $sql->execute();
-
-
-
-
 
 
             } catch (PDOException $e) {
