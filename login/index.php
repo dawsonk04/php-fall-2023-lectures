@@ -1,29 +1,60 @@
 <?php
+session_start();
 
-    if(isset($_POST["txtUserName"])) {
+    if(isset($_POST["txtEmail"])) {
         if (isset($_POST["txtPassword"])) {
-            $userName = $_POST["txtUserName"];
-            $password = $_POST["txtPassword"];
+            $email = $_POST["txtEmail"];
+            $pwd = $_POST["txtPassword"];
             $errormsg = "";
 
-            // Can put this all into one if statement, just chose to do nested if
-            if (strtolower($userName) == "admin") {
-                if ($password == "p@ss") {
-                    header("Location:admin.php");
 
-                }
-            } else {
-                if (strtolower($userName) == "user") {
-                    if ($password == "p@ss") {
-                        header("Location:member.php");
 
+            include '../includes/dbConn.php';
+
+            try {
+
+                $db = new PDO($dsn, $username, $password, $options);
+
+
+                $sql = $db->prepare("select memberID,memberPassword, MemberKey, RoleID from memberLogin where memberEmail = :Email");
+                $sql->bindValue(":Email", $email);
+
+                $sql->execute();
+                $row = $sql->fetch();
+
+                if ($row != null) {
+
+                    $hashedPassword = md5_file($pwd . $row["MemberKey"]);
+
+
+                    if ($hashedPassword == $row["memberPassword"]) {
+                        $_SESSION["UID"] = $row["memberID"];
+                        $_SESSION["Role"] = $row["RoleID"];
+                        if ($row["RoleID"] == 1) {
+                            header("Location:admin.php");
+
+                        } else {
+                            header("Location:member.php");
+
+                        }
+                    }else {
+                        $errormsg = "Wrong Password";
                     }
                 } else {
-                    $errormsg = "Wrong Username or Password";
+                    $errormsg = "Wrong username";
                 }
 
 
+
+            } catch (PDOException $e) {
+                $error = $e->getMessage();
+                echo "Error: $error";
             }
+
+
+
+            // Can put this all into one if statement, just chose to do nested if
+
         }
     }
 
@@ -56,8 +87,8 @@
         </tr>
 
         <tr>
-        <th>User Name</th>
-        <td><input id="txtUserName" name="txtUserName" type="text" size="50"  /></td>
+        <th>Email</th>
+        <td><input id="txtEmail" name="txtEmail" type="text" size="50"  /></td>
         </tr>
 
         <tr>
