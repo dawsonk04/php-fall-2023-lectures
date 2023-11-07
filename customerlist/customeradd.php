@@ -1,4 +1,7 @@
 <?php
+session_start();
+$key = sprintf('%04X%04X%04X%04X%04X%04X%04X%04X', mt_rand(0, 65535), mt_rand(0, 65535), mt_rand(0, 65535), mt_rand(16384, 20479), mt_rand(32768, 49151), mt_rand(0, 65535), mt_rand(0, 65535), mt_rand(0, 65535));
+
     if(isset($_POST['txtFirstName'])) {
         if(isset($_POST['txtLastName'])) {
             if(isset($_POST['txtAddress'])){
@@ -37,7 +40,7 @@
                                             $sql->bindValue(":Zip",$Zip);
                                             $sql->bindValue(":Phone",$Phone);
                                             $sql->bindValue(":Email",$Email);
-                                            $sql->bindValue(":Password",$Password);
+                                            $sql->bindValue(":Password",md5($Password.$key));
 
 
                                             $sql->execute();

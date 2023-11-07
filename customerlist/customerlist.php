@@ -46,6 +46,8 @@
 
         while ($row != null) {
 
+        $hashedPassword = md5($password);
+
             echo "<tr>";
             echo "<td>" . $row["CustomerID"] ." </td>";
             echo "<td> <a href='customerupdate.php?id=". $row["CustomerID"] ."'> " . $row["FirstName"] ."</a> </td>";

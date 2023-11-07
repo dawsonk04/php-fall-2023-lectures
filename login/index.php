@@ -24,7 +24,7 @@ session_start();
 
                 if ($row != null) {
 
-                    $hashedPassword = md5_file($pwd . $row["MemberKey"]);
+                    $hashedPassword = md5($pwd . $row["MemberKey"]);
 
 
                     if ($hashedPassword == $row["memberPassword"]) {
